@@ -40,7 +40,9 @@ jobs:
       - name: 3. 开始移植
         run: |
           cd hyperos_port
-          sudo bash port.sh "${{ github.event.inputs.STOCK_URL }}" "${{ github.event.inputs.PORT_URL }}" | tee HyperOS_portlog.log
+          aria2c -s10 -x10 "${{ github.event.inputs.STOCK_URL }}" -o ./1.zip
+          aria2c -s10 -x10 "${{ github.event.inputs.PORT_URL }}" -o ./2.zip
+          sudo bash port.sh ./1.zip ./2.zip | tee HyperOS_portlog.log
       - name: 4.上传到 OneDrive
         run: |
             cd ${{ github.workspace }}
