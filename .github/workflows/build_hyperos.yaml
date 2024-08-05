@@ -54,7 +54,7 @@ jobs:
             # 部署 rclone
             curl https://rclone.org/install.sh | sudo bash
             mkdir -p ~/.config/rclone/
-            curl -o ~/.config/rclone/ "${{ secrets.RECLONE }}"
+            aria2c -o ~/.config/rclone/rclone.conf "${{ secrets.RECLONE }}"
             rclone sync -P ./hyperos_port/out/*.zip webdav:/HyperOS
       - name: 5.发布完成 Release
         uses: ncipollo/release-action@v1.12.0
