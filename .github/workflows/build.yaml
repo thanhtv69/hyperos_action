@@ -1,6 +1,6 @@
 name: build_haydn
 on:
-  workflow_dispatch:
+    workflow_dispatch:
 	inputs:
 	  STOCK_URL:
 		description: "待操作的底包/xiaomi.eu底包下载地址"
